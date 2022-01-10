@@ -7,7 +7,7 @@ import java.util.*;
  */
 public class JsonObject extends Json {
 
-    HashMap<String, Json> jsonPairs = new HashMap<String, Json>();
+    HashMap<String, Json> jsonPairs = new HashMap<>();
 
     public JsonObject(JsonPair... jsonPairs) {
         for (JsonPair pair : jsonPairs){
@@ -31,22 +31,6 @@ public class JsonObject extends Json {
         }
 
         return "{" + out + "}";
-        /*StringBuilder jsonStr = new StringBuilder();
-        Iterator<Map.Entry<String,Json>> jsonIterator = jsonPairs.entrySet().iterator();
-        jsonStr.append("{");
-        while (jsonIterator.hasNext()) {
-            Map.Entry<String,Json> json = jsonIterator.next();
-            jsonStr.append("'");
-            jsonStr.append(json.getKey());
-            jsonStr.append("'");
-            jsonStr.append(": ");
-            jsonStr.append(json.getValue().toJson());
-            if (jsonIterator.hasNext()) {
-                jsonStr.append(", ");
-            }
-        }
-        jsonStr.append("}");
-        return jsonStr.toString();*/
     }
 
     public void add(JsonPair jsonPair) {
@@ -56,7 +40,6 @@ public class JsonObject extends Json {
     public boolean contains(String name) {
         return this.jsonPairs.containsKey(name);
     }
-
 
     public Json find(String name) {
         if (contains(name)) return jsonPairs.get(name);
